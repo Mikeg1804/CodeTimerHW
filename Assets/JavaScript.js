@@ -1,4 +1,3 @@
-
 //variables for question and answers.
 var question1 = "Commonly used data type DO NOT include:";
 let question1Options = ["  Strings", " Boolean", " Alert", "Numbers "];
@@ -26,11 +25,9 @@ let question4Options = [
   "console.log",
 ];
 
-
 //Variables for score and name entries used at the end.
 var score = "Score";
-var nameRequest ="Enter Name"
-
+var nameRequest = "Enter Name";
 
 var questionNumber = 1;
 
@@ -41,8 +38,8 @@ var questionEl = document.getElementById("question");
 var optionsEl = document.getElementById("options");
 var nameEl = document.getElementById("name");
 var start = document.getElementById("button");
-var nameInputEl = document.getElementById("nameinput")
-var nameInputElHide = nameInputEl.classList.add("hide")
+var nameInputEl = document.getElementById("nameinput");
+var nameInputElHide = nameInputEl.classList.add("hide");
 
 var secondsLeft = 50;
 
@@ -60,7 +57,7 @@ function setTime() {
     secondsLeft--;
     timeEl.textContent = secondsLeft;
 
-    if (secondsLeft === 0){
+    if (secondsLeft === 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
     }
@@ -69,25 +66,25 @@ function setTime() {
       clearInterval(timerInterval);
     }
     // moves time as score to the place where question options used to show up
-    if (questionNumber > 4)  {
-      optionsEl.textContent=secondsLeft;
+    if (questionNumber > 4) {
+      optionsEl.textContent = secondsLeft;
     }
     // makes the work score comes out.
-    if (questionNumber > 4)  {
-      questionEl.textContent=score;
+    if (questionNumber > 4) {
+      questionEl.textContent = score;
     }
     // Makes the phrase Enter Name shows
-    if (questionNumber > 4)  {
-      nameEl.textContent=nameRequest;
+    if (questionNumber > 4) {
+      nameEl.textContent = nameRequest;
     }
     // Makes the Entry box show up
-    if (questionNumber > 4)  {
-      nameInputElHide=nameInputEl.classList.remove("hide");
-    } 
-    // Hides time on the top right coner since time is now in the middle as score. 
-    if (questionNumber > 4)  {
+    if (questionNumber > 4) {
+      nameInputElHide = nameInputEl.classList.remove("hide");
+    }
+    // Hides time on the top right coner since time is now in the middle as score.
+    if (questionNumber > 4) {
       timeEl.classList.add("hide");
-    }   
+    }
   }, 1000);
 }
 
@@ -111,7 +108,7 @@ function setQuestion() {
   questionEl.textContent = questionTitle;
   optionsEl.innerHTML = "";
 
-//This for loop below embed the event listener that captures the answers from the user.
+  //This for loop below embed the event listener that captures the answers from the user.
   for (let index = 0; index < options.length; index++) {
     const element = options[index];
     var button = document.createElement("button");
@@ -134,4 +131,3 @@ function checkAnswer(event) {
   questionNumber++;
   setQuestion();
 }
-
