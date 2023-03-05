@@ -40,6 +40,8 @@ var nameEl = document.getElementById("name");
 var start = document.getElementById("button");
 var nameInputEl = document.getElementById("nameinput");
 var nameInputElHide = nameInputEl.classList.add("hide");
+var saveScoreEl = document.getElementById("submit")
+saveScoreEl.classList.add("hide")
 
 var secondsLeft = 50;
 
@@ -79,6 +81,7 @@ function setTime() {
     }
     // Makes the Entry box show up
     if (questionNumber > 4) {
+      saveScoreEl.classList.remove("hide")
       nameInputElHide = nameInputEl.classList.remove("hide");
     }
     // Hides time on the top right coner since time is now in the middle as score.
@@ -131,3 +134,23 @@ function checkAnswer(event) {
   questionNumber++;
   setQuestion();
 }
+
+
+saveScoreEl.addEventListener("click",function(){
+  var user = nameInputEl.value
+  var highScoreList = JSON.parse(localStorage.getItem("highScore")) || []
+  highScoreList.push({
+    user:user,score:secondsLeft
+  })
+  localStorage.setItem("highScore",JSON.stringify(highScoreList))
+  saveScoreEl.classList.add("hide")
+  document.querySelector("table").classList.remove("hide")
+  var htmlText = ""
+  for(let i=0;i<highScoreList.length;i++){
+    htmlText += `<tr>
+    <td>${highScoreList[i].user}</td>
+    <td>${highScoreList[i].score}</td>`
+  }
+  document.getElementById("score-list").innerHTML = htmlText
+}
+)
